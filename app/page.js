@@ -13,7 +13,7 @@ export default function SelectorPage() {
   useEffect(() => {
     async function loadPeople() {
       const { data, error } = await supabase
-        .from('people')
+        .from('people_with_tier')
         .select('id, surname, first_name')
         .order('surname');
 

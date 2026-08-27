@@ -6,12 +6,12 @@ import { supabase } from '@/lib/supabaseClient';
 import PersonCard from '@/components/PersonCard';
 
 const TIER_LABELS = {
-  1: '10 years and above',
-  2: '6–9 years',
-  3: '3–5 years',
+  1: 'TIER 1: 10 years and above',
+  2: 'TIER 2: 6 to 9 years',
+  3: 'TIER 3: 3 to 5 years',
   4: '2 years and below',
 };
-
+1 
 export default function WallPage() {
   const [people, setPeople] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,7 +26,7 @@ export default function WallPage() {
 
     async function loadWall() {
       const { data, error } = await supabase
-        .from('people')
+        .from('people_with_tier')
         .select('*')
         .order('tier')
         .order('sort_order');
@@ -72,20 +72,29 @@ export default function WallPage() {
 
       {Object.entries(TIER_LABELS).map(([tier, label]) => (
         <section key={tier} className="mb-14">
-          <h2 className="text-lg font-medium mb-6">{label}</h2>
+          <h2 className="italic text-md font-bold mb-6 font-sans">{label}</h2>
           {grouped[tier]?.length ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
-              {grouped[tier].map((p) =>
-                tier === '4' ? (
-                  <div key={p.id} className="card-metallic p-4">
-                    <div className="bg-[#E3CBA0] rounded-lg p-4 min-h-[340px] flex flex-col justify-between">
+              {grouped[tier].map((p) => {
+                const tierStyles = {
+                  '1': { border: 'card-diamond', bg: '#EAF6FB' },
+                  '2': { border: 'card-gold', bg: '#e5d9b9' },
+                  '3': { border: 'card-silver', bg: '#d9d9d9' },
+                  '4': { border: 'card-metallic', bg: '#b8a37a' },
+                };
+                const style = tierStyles[tier];
+
+                return (
+                  <div key={p.id} className={`${style.border} p-4`}>
+                    <div
+                      className="rounded-lg p-4 min-h-[340px] flex flex-col justify-between"
+                      style={{ backgroundColor: style.bg }}
+                    >
                       <PersonCard person={p} />
                     </div>
                   </div>
-                ) : (
-                  <PersonCard key={p.id} person={p} />
-                )
-              )}
+                );
+              })}
             </div>
           ) : (
             <p className="text-sm text-neutral-400 italic">

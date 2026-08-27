@@ -56,7 +56,7 @@ body {
 
 .card-metallic {
   position: relative;
-  background: linear-gradient(135deg, #3E2C1C, #B87333, #E6C789, #6B4423, #2E1F14);
+  background: linear-gradient(135deg, #241a11, #825326, #ab976f, #7c4415, #160e07);
   background-size: 400% 400%;
   animation: shine 3s ease-in-out infinite;
   border-radius: 0.75rem;
@@ -72,6 +72,84 @@ body {
     transparent 0%,
     transparent 8%,
     rgba(255, 255, 255, 0.25) 10%,
+    transparent 12%,
+    transparent 20%
+  );
+  background-size: 300% 300%;
+  animation: foil-sweep 20s linear infinite;
+  pointer-events: none;
+}
+
+.card-diamond {
+  position: relative;
+  background: linear-gradient(135deg, #31414d, #6ea1b5, #FFFFFF, #45a6cd, #70959f);
+  background-size: 400% 400%;
+  animation: shine 3s ease-in-out infinite;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.card-diamond::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    110deg,
+    transparent 0%,
+    transparent 8%,
+    rgba(197, 215, 233, 0.5) 10%,
+    transparent 12%,
+    transparent 20%
+  );
+  background-size: 300% 300%;
+  animation: foil-sweep 20s linear infinite;
+  pointer-events: none;
+}
+
+.card-gold {
+  position: relative;
+  background: linear-gradient(135deg, #7A5C00, #D4AF37, #FFF3B0, #D4AF37, #7A5C00);
+  background-size: 400% 400%;
+  animation: shine 3s ease-in-out infinite;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.card-gold::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    110deg,
+    transparent 0%,
+    transparent 8%,
+    rgba(255, 255, 255, 0.35) 10%,
+    transparent 12%,
+    transparent 20%
+  );
+  background-size: 300% 300%;
+  animation: foil-sweep 20s linear infinite;
+  pointer-events: none;
+}
+
+.card-silver {
+  position: relative;
+  background: linear-gradient(135deg, #252222, #828282, #F0F0F0, #929090, #000000);
+  background-size: 400% 400%;
+  animation: shine 3s ease-in-out infinite;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.card-silver::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    110deg,
+    transparent 0%,
+    transparent 8%,
+    rgba(255, 255, 255, 0.4) 10%,
     transparent 12%,
     transparent 20%
   );

@@ -22,14 +22,14 @@ export default function PersonCard({ person }) {
           </div>
         )}
       </div>
-      <p className="mt-2 font-semibold text-sm">
+      <p className="mt-2 font-semibold text-md text-neutral-950 font-serif">
         {person.honorific ? `${person.honorific} ` : ''}
         <span className="uppercase">{person.surname}</span>
       </p>
-      <p className="text-sm">
+      <p className=" text-sm text-neutral-950 font-serif">
         {person.first_name} {person.middle_initial || ''}
       </p>
-      <p className="text-xs text-neutral-500 mt-1 max-w-[9rem]">{person.degree}</p>
+      <p className="italic text-[9px] text-neutral-700 mt-2 max-w-[9rem] font-mono">{person.degree}</p>
     </div>
   );
 }
