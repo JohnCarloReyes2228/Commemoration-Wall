@@ -42,6 +42,11 @@ export default function WallPage() {
     loadWall();
   }, [router]);
 
+  const handleLogout = () => {
+    localStorage.removeItem('visitor_id');
+    router.push('/');
+  }
+
   if (loading) {
     return (
       <main className="min-h-screen flex items-center justify-center">
@@ -49,7 +54,7 @@ export default function WallPage() {
       </main>
     );
   }
-
+  
   const grouped = people.reduce((acc, p) => {
     (acc[p.tier] ??= []).push(p);
     return acc;
@@ -57,6 +62,15 @@ export default function WallPage() {
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-12">
+      <div className="flex justift-end mb-8">
+        <button
+          onClick={handleLogout}
+          className="text-sm text-neutral-500 hover:text-neutral-800 underline"
+        >
+          Logout
+        </button>
+      </div>
+      
       {Object.entries(TIER_LABELS).map(([tier, label]) =>
         grouped[tier]?.length ? (
           <section key={tier} className="mb-14">
