@@ -62,7 +62,7 @@ export default function WallPage() {
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-12">
-      <div className="flex justift-end mb-8">
+      <div className="flex justify-end mb-8">
         <button
           onClick={handleLogout}
           className="text-sm text-neutral-500 hover:text-neutral-800 underline"
@@ -70,7 +70,7 @@ export default function WallPage() {
           Logout
         </button>
       </div>
-      
+
       {Object.entries(TIER_LABELS).map(([tier, label]) =>
         grouped[tier]?.length ? (
           <section key={tier} className="mb-14">
