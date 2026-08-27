@@ -78,7 +78,7 @@ export default function WallPage() {
               {grouped[tier].map((p) =>
                 tier === '4' ? (
                   <div key={p.id} className="card-metallic p-4">
-                    <div className="bg-[#E3CBA0] rounded-lg p-4">
+                    <div className="bg-[#E3CBA0] rounded-lg p-4 min-h-[340px] flex flex-col justify-between">
                       <PersonCard person={p} />
                     </div>
                   </div>

@@ -58,7 +58,7 @@ body {
   position: relative;
   background: linear-gradient(135deg, #3E2C1C, #B87333, #E6C789, #6B4423, #2E1F14);
   background-size: 400% 400%;
-  animation: shine 4s ease-in-out infinite;
+  animation: shine 3s ease-in-out infinite;
   border-radius: 0.75rem;
   overflow: hidden;
 }
@@ -68,7 +68,7 @@ body {
   position: absolute;
   inset: 0;
   background: repeating-linear-gradient(
-    115deg,
+    110deg,
     transparent 0%,
     transparent 8%,
     rgba(255, 255, 255, 0.25) 10%,
@@ -76,6 +76,6 @@ body {
     transparent 20%
   );
   background-size: 300% 300%;
-  animation: foil-sweep 3.5s linear infinite;
+  animation: foil-sweep 20s linear infinite;
   pointer-events: none;
 }
