@@ -6,10 +6,10 @@ import { supabase } from '@/lib/supabaseClient';
 import PersonCard from '@/components/PersonCard';
 
 const TIER_LABELS = {
-  1: 'TIER 1: 10 years and above',
-  2: 'TIER 2: 6 to 9 years',
-  3: 'TIER 3: 3 to 5 years',
-  4: '2 years and below',
+  1: 'DIAMOND | 10 years and above |',
+  2: 'GOLD | 6 to 9 years |',
+  3: 'SILVER | 3 to 5 years |',
+  4: 'BRONZE | 2 years and below |',
 };
 1 
 export default function WallPage() {
