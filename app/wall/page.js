@@ -70,7 +70,7 @@ export default function WallPage() {
         </button>
       </div>
 
-            {Object.entries(TIER_LABELS).map(([tier, label]) => (
+      {Object.entries(TIER_LABELS).map(([tier, label]) => (
         <section key={tier} className="mb-14">
           <h2 className="text-lg font-medium mb-6">{label}</h2>
           {grouped[tier]?.length ? (
