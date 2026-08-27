@@ -8,7 +8,7 @@ export default function PersonCard({ person }) {
 
   return (
     <div className="flex flex-col items-center text-center">
-      <div className="w-32 h-40 relative rounded overflow-hidden bg-neutral-200">
+      <div className="w-36 h-48 relative rounded overflow-hidden bg-neutral-200">
         {person.photo_path ? (
           <Image
             src={data.publicUrl}

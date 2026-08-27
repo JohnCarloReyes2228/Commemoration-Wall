@@ -41,6 +41,6 @@ body {
   background: linear-gradient(120deg, #6b4423, #b87333, #e6c789, #b87333, #6b4423);
   background-size: 300% 300%;
   animation: shine 3s ease-in-out infinite;
-  padding: 3px;
+  padding: 8px;
   border-radius: 0.75rem;
 }
