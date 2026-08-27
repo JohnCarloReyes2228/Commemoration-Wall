@@ -7,10 +7,9 @@ import PersonCard from '@/components/PersonCard';
 
 const TIER_LABELS = {
   1: '10 years and above',
-  2: '7–10 years',
-  3: '5–7 years',
-  4: '3–5 years',
-  5: '3 years and below',
+  2: '6–9 years',
+  3: '3–5 years',
+  4: '2 years and below',
 };
 
 export default function WallPage() {
