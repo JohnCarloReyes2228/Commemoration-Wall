@@ -75,9 +75,17 @@ export default function WallPage() {
           <h2 className="text-lg font-medium mb-6">{label}</h2>
           {grouped[tier]?.length ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
-              {grouped[tier].map((p) => (
-                <PersonCard key={p.id} person={p} />
-              ))}
+              {grouped[tier].map((p) =>
+                tier === '4' ? (
+                  <div key={p.id} className="card-border-bronze">
+                    <div className="bg-white rounded-lg p-4">
+                      <PersonCard person={p} />
+                    </div>
+                  </div>
+                ) : (
+                  <PersonCard key={p.id} person={p} />
+                )
+              )}
             </div>
           ) : (
             <p className="text-sm text-neutral-400 italic">
