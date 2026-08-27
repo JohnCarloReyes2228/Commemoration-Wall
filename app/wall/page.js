@@ -70,18 +70,22 @@ export default function WallPage() {
         </button>
       </div>
 
-      {Object.entries(TIER_LABELS).map(([tier, label]) =>
-        grouped[tier]?.length ? (
-          <section key={tier} className="mb-14">
-            <h2 className="text-lg font-medium mb-6">{label}</h2>
+            {Object.entries(TIER_LABELS).map(([tier, label]) => (
+        <section key={tier} className="mb-14">
+          <h2 className="text-lg font-medium mb-6">{label}</h2>
+          {grouped[tier]?.length ? (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
               {grouped[tier].map((p) => (
                 <PersonCard key={p.id} person={p} />
               ))}
             </div>
-          </section>
-        ) : null
-      )}
+          ) : (
+            <p className="text-sm text-neutral-400 italic">
+              NO PERSONA ACHIEVED THIS TIER
+            </p>
+          )}
+        </section>
+      ))}
     </main>
   );
 }
