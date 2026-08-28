@@ -8,13 +8,15 @@ export default function SelectorPage() {
   const [people, setPeople] = useState([]);
   const [selectedId, setSelectedId] = useState('');
   const [loading, setLoading] = useState(true);
+  const [entering, setEntering] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     async function loadPeople() {
       const { data, error } = await supabase
         .from('people_with_tier')
-        .select('id, surname, first_name')
+        .select('id, honorific, first_name, middle_initial, surname')
         .order('surname');
 
       if (error) {
@@ -28,20 +30,45 @@ export default function SelectorPage() {
   }, []);
 
   const handleEnter = async () => {
-    if (!selectedId) return;
+    if (!selectedId || entering || showWelcome) return;
+    setEntering(true)
     localStorage.setItem('visitor_id', selectedId);
     await supabase.from('visits').insert({ person_id: selectedId });
-    router.push('/wall');
+    setTimeout(() => {
+      setEntering(false);
+      setShowWelcome(true);
+      setTimeout(() => {
+        router.push('/wall');
+      }, 1000);
+    }, 3000);
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center gap-4 bg-neutral-50 px-4">
-      <h1 className="text-xl font-medium text-center">Who are you?</h1>
-
-      {loading ? (
-        <p className="text-neutral-500 text-sm">Loading names...</p>
+    <main className="min-h-screen flex flex-col items-center justify-center gap-4 bg-gradient-to-br from-black via-neutral-950 to-[#7A5C00] px-4">
+      {entering ? (
+        <div className="flex flex-col items-center justify-center gap-5">
+          <div className="w-12 h-12 border-4 border-[#D4AF37]/30 border-t-[#D4AF37] rounded-full animate-spin"></div>
+          <p className="text-white text-sm tracking-widest">
+            ENTERING...
+          </p>
+        </div>
+      ) : showWelcome ? (
+        <div className="flex flex-col items-center justify-center text-center">
+          <p className="text-[#D4AF37] text-sm tracking-[0.3em] mb-3">
+            WELCOME
+          </p>
+          <h1 className="text-2xl font-medium text-white">
+            {people.find((p) => p.id === selectedId)?.honorific}{' '}
+            {people.find((p) => p.id === selectedId)?.first_name}{' '}
+            {people.find((p) => p.id === selectedId)?.middle_initial}{' '}
+            {people.find((p) => p.id === selectedId)?.surname}
+          </h1>
+        </div>
       ) : (
         <>
+          <h1 className="text-xl font-medium text-center text-white">
+            Welcome
+          </h1>
           <select
             value={selectedId}
             onChange={(e) => setSelectedId(e.target.value)}

@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+html {
+  overflow-x: hidden;
+}
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -23,6 +26,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 @keyframes shine {
@@ -34,6 +39,50 @@ body {
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.card-hover:hover {
+  transform: translateY(-20px) scale(1.03);
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.35);
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  animation: fadeIn 0.25s ease;
+}
+
+.modal-card {
+  animation: popIn 0.3s ease;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -157,3 +206,31 @@ body {
   animation: foil-sweep 20s linear infinite;
   pointer-events: none;
 }
+
+.card-white {
+  position: relative;
+  background: linear-gradient(135deg, #FFFFFF, #F5F5F5, #FFFFFF, #EFEFEF, #FFFFFF);
+  background-size: 400% 400%;
+  animation: shine 3s ease-in-out infinite;
+  border: 1px solid #E5E5E5;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.card-white::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    110deg,
+    transparent 0%,
+    transparent 8%,
+    rgba(200, 200, 200, 0.3) 10%,
+    transparent 12%,
+    transparent 20%
+  );
+  background-size: 300% 300%;
+  animation: foil-sweep 20s linear infinite;
+  pointer-events: none;
+}
+
