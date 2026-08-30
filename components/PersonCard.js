@@ -32,6 +32,11 @@ export default function PersonCard({ person, borderColor }) {
       <p className=" text-sm text-neutral-950 font-serif">
         {person.first_name} {person.middle_initial || ''}
       </p>
+      {person.year_grad && (
+        <p className=" italic graduation-year text-[10px] text-neutral-900 font-serif mt-3">
+          Class of {person.year_grad}
+        </p>
+      )}
     </div>
   );
 }
